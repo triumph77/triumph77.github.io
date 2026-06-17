@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>萌宠洗护馆 - 宠物美容</title>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: #FFF8F5;
+      color: #333;
+    }
+    h1, h2, h3 { font-family: 'Varela Round', sans-serif; }
+
+    /* 导航 */
+    .nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(255,248,245,0.85); backdrop-filter: blur(12px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 48px;
+    }
+    .nav .logo { font-family: 'Varela Round', sans-serif; font-size: 24px; color: #FF7E67; }
+    .nav a { text-decoration: none; color: #555; margin-left: 24px; font-weight: 600; }
+    .nav a:hover { color: #FF7E67; }
+
+    /* Hero */
+    .hero {
+      margin-top: 72px; padding: 80px 48px; text-align: center;
+      background: linear-gradient(135deg, #FFF8F5 0%, #FFE8E0 100%);
+    }
+    .hero h1 { font-size: 52px; color: #FF7E67; margin-bottom: 16px; }
+    .hero p { font-size: 20px; color: #666; max-width: 600px; margin: 0 auto 32px; }
+    .hero .stats { display: flex; justify-content: center; gap: 48px; margin-top: 40px; }
+    .hero .stats span { font-size: 28px; font-weight: 700; color: #FF7E67; }
+    .hero .stats small { display: block; font-size: 14px; color: #999; font-weight: 400; }
+    .btn {
+      display: inline-block; padding: 14px 40px; border-radius: 50px;
+      font-weight: 700; font-size: 16px; cursor: pointer; border: none; text-decoration: none;
+    }
+    .btn-primary { background: #FF7E67; color: #fff; }
+    .btn-primary:hover { background: #e56a55; }
+
+    /* 区块通用 */
+    section { padding: 72px 48px; max-width: 1200px; margin: 0 auto; }
+    section h2 { text-align: center; font-size: 36px; color: #FF7E67; margin-bottom: 48px; }
+
+    /* 服务卡片 */
+    .services-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .service-card {
+      background: #fff; border-radius: 20px; padding: 32px 20px; text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: transform .2s;
+    }
+    .service-card:hover { transform: translateY(-6px); }
+    .service-card .icon { font-size: 40px; margin-bottom: 12px; }
+    .service-card h3 { color: #FF7E67; margin-bottom: 8px; }
+    .service-card p { color: #888; font-size: 14px; }
+
+    /* 价格 */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .price-card {
+      background: #fff; border-radius: 20px; padding: 36px 24px; text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .price-card.featured {
+      background: #FF7E67; color: #fff; transform: scale(1.05);
+    }
+    .price-card .price { font-size: 40px; font-weight: 700; margin: 16px 0; }
+    .price-card.featured .price { color: #fff; }
+    .price-card ul { list-style: none; margin: 20px 0; }
+    .price-card ul li { padding: 6px 0; font-size: 14px; }
+
+    /* 评价 */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .review-card {
+      background: #fff; border-radius: 20px; padding: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .review-card .stars { color: #FFB347; margin-bottom: 8px; }
+    .review-card p { color: #666; font-size: 14px; line-height: 1.7; }
+
+    /* CTA */
+    .cta {
+      text-align: center; background: linear-gradient(135deg, #FF7E67, #FFB347);
+      border-radius: 24px; padding: 64px 48px; margin: 0 48px 48px;
+    }
+    .cta h2 { color: #fff; margin-bottom: 12px; }
+    .cta p { color: #fff; opacity: .9; margin-bottom: 32px; }
+    .cta .btn { background: #fff; color: #FF7E67; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 32px; color: #aaa; font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .services-grid, .pricing-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 36px; }
+      .nav { padding: 12px 20px; }
+      section { padding: 48px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="nav">
+    <span class="logo">🐾 萌宠洗护馆</span>
+    <div>
+      <a href="#services">服务</a>
+      <a href="#pricing">价格</a>
+      <a href="#reviews">评价</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>让毛孩子闪闪发光</h1>
+    <p>专业宠物美容洗护服务，温柔呵护每一只毛孩子</p>
+    <a href="#pricing" class="btn btn-primary">立即预约</a>
+    <div class="stats">
+      <div><span>5000+</span><small>服务宠物</small></div>
+      <div><span>98%</span><small>好评率</small></div>
+      <div><span>10+</span><small>专业技师</small></div>
+    </div>
+  </section>
+
+  <!-- 服务 -->
+  <section id="services">
+    <h2>我们的服务</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon">🛁</div>
+        <h3>精致洗护</h3>
+        <p>温和配方洗浴 + 护毛素护理</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">✂️</div>
+        <h3>创意造型</h3>
+        <p>专业美容师量身定制造型</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">💅</div>
+        <h3>指甲护理</h3>
+        <p>安全修剪 + 磨平抛光</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🦷</div>
+        <h3>口腔清洁</h3>
+        <p>专业宠物牙膏清洁护理</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 价格 -->
+  <section id="pricing">
+    <h2>价格方案</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>基础洗护</h3>
+        <div class="price">¥88</div>
+        <ul>
+          <li>✓ 全身洗浴</li>
+          <li>✓ 吹干梳理</li>
+          <li>✓ 指甲修剪</li>
+        </ul>
+        <a href="#" class="btn btn-primary">选择方案</a>
+      </div>
+      <div class="price-card featured">
+        <h3>尊享套餐</h3>
+        <div class="price">¥188</div>
+        <ul>
+          <li>✓ 精致洗护</li>
+          <li>✓ 创意造型</li>
+          <li>✓ 指甲护理</li>
+          <li>✓ 口腔清洁</li>
+          <li>✓ 修脚底毛</li>
+        </ul>
+        <a href="#" class="btn" style="background:#fff;color:#FF7E67;">最受欢迎</a>
+      </div>
+      <div class="price-card">
+        <h3>豪华SPA</h3>
+        <div class="price">¥288</div>
+        <ul>
+          <li>✓ 尊享套餐全部</li>
+          <li>✓ 精油SPA按摩</li>
+          <li>✓ 深层护毛</li>
+          <li>✓ 耳道清洁</li>
+        </ul>
+        <a href="#" class="btn btn-primary">选择方案</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 评价 -->
+  <section id="reviews">
+    <h2>主人怎么说</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"第一次带我家豆包来，美容师特别温柔，豆包全程都很配合，洗完香喷喷的！"</p>
+        <p style="margin-top:12px;font-weight:700;">—— 豆包妈妈</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"造型太棒了！我家泰迪剪完简直换了一只狗，朋友都问在哪剪的。强烈推荐！"</p>
+        <p style="margin-top:12px;font-weight:700;">—— 可乐爸爸</p>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"环境干净整洁，没有异味，工作人员很有爱心，已经办了会员卡。"</p>
+        <p style="margin-top:12px;font-weight:700;">—— 咪咪主人</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>首次体验享 8 折优惠</h2>
+    <p>即日起至月底，新客首次到店享8折，快来预约吧！</p>
+    <a href="#" class="btn">立即预约</a>
+  </div>
+
+  <footer>
+    <p>© 2026 萌宠洗护馆 · 用心呵护每一只毛孩子</p>
+  </footer>
+
+</body>
+</html>
